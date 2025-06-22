@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Affichage données capteurs</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 400px; margin: 2em auto; }
+  h1 { text-align: center; }
+  .data { margin: 1em 0; padding: 1em; background: #eef; border-radius: 5px; }
+  .label { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Données Capteurs</h1>
+
+<div class="data">
+  <div><span class="label">Température :</span> <span id="temp">--</span> °C</div>
+  <div><span class="label">Humidité :</span> <span id="hum">--</span> %</div>
+  <div><span class="label">Luminosité :</span> <span id="lux">--</span> lux</div>
+  <div><span class="label">Distance :</span> <span id="dist">--</span> cm</div>
+</div>
+
+<script>
+// Fonction pour mettre à jour les données à partir d'une chaîne comme "T:24.5;H:50.2;L:300;D:120"
+function updateData(dataStr) {
+  const parts = dataStr.split(';');
+  parts.forEach(part => {
+    const [key, value] = part.split(':');
+    if (key && value) {
+      switch(key) {
+        case 'T':
+          document.getElementById('temp').textContent = value;
+          break;
+        case 'H':
+          document.getElementById('hum').textContent = value;
+          break;
+        case 'L':
+          document.getElementById('lux').textContent = value;
+          break;
+        case 'D':
+          document.getElementById('dist').textContent = value;
+          break;
+      }
+    }
+  });
+}
+
+// Exemple d'appel pour test (remplace par des données réelles reçues du serveur)
+updateData("T:24.5;H:55.3;L:320;D:110.7");
+
+// ---------
+// Pour connecter cette page à un serveur réel, tu peux utiliser par exemple :
+// - Requêtes AJAX périodiques vers une API REST qui fournit les données en JSON
+// - WebSocket pour recevoir les données en temps réel
+// - SSE (Server-Sent Events)
+// ---------
+
+</script>
+
+</body>
+</html>
