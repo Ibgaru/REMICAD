@@ -22,7 +22,6 @@
 </div>
 
 <script>
-// Fonction pour mettre à jour les données à partir d'une chaîne comme "T:24.5;H:50.2;L:300;D:120"
 function updateData(dataStr) {
   const parts = dataStr.split(';');
   parts.forEach(part => {
@@ -46,17 +45,9 @@ function updateData(dataStr) {
   });
 }
 
-// Exemple d'appel pour test (remplace par des données réelles reçues du serveur)
-updateData("T:24.5;H:55.3;L:320;D:110.7");
 
-// ---------
-// Pour connecter cette page à un serveur réel, tu peux utiliser par exemple :
-// - Requêtes AJAX périodiques vers une API REST qui fournit les données en JSON
-// - WebSocket pour recevoir les données en temps réel
-// - SSE (Server-Sent Events)
-// ---------
 
-</script>
+
 
 </body>
 </html>
